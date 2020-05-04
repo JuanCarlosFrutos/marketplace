@@ -26,6 +26,7 @@ import HeaderMenu from '../common/HeaderMenu'
 import {Layout, notification} from 'antd';
 import {getLoggedUser, logout} from "../store/actions";
 import { RenderMediaQuery } from 'render-media-query'
+import BusinessDetailView from '../businessDetail/BusinessDetailView'
 
 const {Content} = Layout;
 
@@ -108,6 +109,9 @@ class App extends Component {
                                    render={(props) => <Profile isAuthenticated={
                                        this.props.loggedUser.job.isAuthenticated}
                                                                currentUser={this.props.loggedUser} {...props}  />}>
+                            </Route>
+                            <Route path="/business/:id">
+                                <BusinessDetailView />
                             </Route>
                             {/* <Route path="/stations/:stationId"
                                    render={(props) => <Station
