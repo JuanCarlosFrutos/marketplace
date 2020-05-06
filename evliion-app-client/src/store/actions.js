@@ -91,7 +91,7 @@ const dispatchFetchingBusinessList  = () => {
     }
 }
 
-const dispatchClearBusinessList = () => {
+export const dispatchClearBusinessList = () => {
     return {
         type: businessListActions.CLEAR_BUSINESS_LIST    
     }

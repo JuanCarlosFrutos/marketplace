@@ -6,7 +6,7 @@ import { DEFAULT_CURRENT_LOCATION } from '../constants';
 import { getCurrentLocation } from '../util/Helpers'
 import './BusinessList.css';
 import {connect} from 'react-redux';
-import { getAllBusinessList } from "../store/actions";
+import { getAllBusinessList, dispatchClearBusinessList } from "../store/actions";
 
 const hasBusiness = (businessListRequest) => businessListRequest.data && businessListRequest.data.content && businessListRequest.data.content.length > 0
 class BusinessList extends Component {
@@ -43,6 +43,10 @@ class BusinessList extends Component {
     componentDidMount() {
         this.props.getAllBusinessList()
         this.loadingCurrentPosition()
+    }
+
+    componentWillUnmount() {
+        this.props.dispatchClearBusinessList()
     }
 
     handleLoadMore() {
@@ -106,6 +110,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         getAllBusinessList: () => dispatch(getAllBusinessList()),
+        dispatchClearBusinessList: () => dispatch(dispatchClearBusinessList()),
     }
 };
 

@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
-import { Layout, Row, Col, Typography , Button} from 'antd';
+import { Layout, Row, Col } from 'antd';
 import PlaceFinder from './PlaceFinder'
 import CurrentAddress from './CurrentAddress';
+import ShopCarBadge from '../ShopCarBadge'
 
 const Header = Layout.Header;
-const Text = Typography.Text
-
-const Badge = () => <Button style={{ fontSize: '18px', color: '#fff', background: '#bfbfbf'}} shape='round' icon='shopping-cart'>
-    <Text style={{fontSize: '14px', color: '#fff'}}>0</Text>
-</Button>
 
 function HeaderMenu () {
     const [searchInputVisible, setSearchInputVisibility] = useState(false)
@@ -19,7 +15,7 @@ function HeaderMenu () {
                     <PlaceFinder setSearchInputVisibility={setSearchInputVisibility} searchInputVisible={searchInputVisible} />
                 </Col>
                 <Col align='center' style={{ display: searchInputVisible ? 'none' : 'inherit'}} span={12}><CurrentAddress /></Col>
-                <Col align='end' style={{ display: searchInputVisible ? 'none' : 'inherit'}} span={6}><Badge /></Col>
+                <Col align='end' style={{ display: searchInputVisible ? 'none' : 'inherit'}} span={6}><ShopCarBadge /></Col>
             </Row>
         </Header>
     );

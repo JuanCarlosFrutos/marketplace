@@ -3,6 +3,7 @@ import { Skeleton, Card, Typography } from 'antd';
 import { getDistance } from 'geolib';
 import PropType from 'prop-types'
 import CardCover from './CardCover'
+import { useHistory } from "react-router-dom";
 import './Business.css'
 
 const { Text } = Typography;
@@ -16,8 +17,10 @@ const bodyStyle = {
 }
 
 function Business ({business, currentLocation}) {
+    let history = useHistory();
     return (
         <Card
+            onClick={() => {history.push(`business/${business.id}`)}}
             hoverable
             style={{ width: '100%', marginTop: '16px', padding: '0px'}}
             cover={<CardCover url={business.photoUrl} />}
